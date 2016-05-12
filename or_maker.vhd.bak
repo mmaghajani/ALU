@@ -18,5 +18,4 @@ begin
 
   output <= temp ;
   
-  zero_flag <= not( temp(0) or temp(1) or temp(2) or temp(3) or temp(4) or temp(5) or temp(6) or temp(7) ) ;
 end architecture ;
