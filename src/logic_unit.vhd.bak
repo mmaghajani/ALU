@@ -64,7 +64,8 @@ signal or_output : std_logic_vector( 7 downto 0 ) ;
 signal shift_to_left_output : std_logic_vector( 7 downto 0 ) ;
 signal shift_to_right_output : std_logic_vector( 7 downto 0 ) ;
 begin
-  
+  and_make : and_maker port map () ;
+  or_make : or_maker port map() ;
 end architecture ;
 
 
