@@ -65,7 +65,19 @@ signal shift_to_left_output : std_logic_vector( 7 downto 0 ) ;
 signal shift_to_right_output : std_logic_vector( 7 downto 0 ) ;
 
 signal zero_flag_and : std_logic ;
+signal zero_flag_or : std_logic ;
+signal zero_flag_shift_right : std_logic ;
+signal zero_flag_shift_left : std_logic ;
 
+signal carry_flag_and : std_logic ;
+signal carry_flag_or : std_logic ;
+signal carry_flag_shift_right : std_logic ;
+signal carry_flag_shift_left : std_logic ;
+
+signal sign_flag_and : std_logic ;
+signal sign_flag_or : std_logic ;
+signal sign_flag_shift_right : std_logic ;
+signal sign_flag_shift_left : std_logic ;
 begin
   
 end architecture ;
