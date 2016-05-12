@@ -63,9 +63,6 @@ signal and_output : std_logic_vector( 7 downto 0 ) ;
 signal or_output : std_logic_vector( 7 downto 0 ) ;
 signal shift_to_left_output : std_logic_vector( 7 downto 0 ) ;
 signal shift_to_right_output : std_logic_vector( 7 downto 0 ) ;
-
-signal zero_flag_and : std_logic ;
-
 begin
   
 end architecture ;
