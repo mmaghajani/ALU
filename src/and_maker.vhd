@@ -7,7 +7,9 @@ entity and_maker is port(
   a : in std_logic_vector( 7 downto 0 ) ;
   b : in std_logic_vector( 7 downto 0 ) ;
   output : out std_logic_vector( 7 downto 0 ) ;
-  zero_flag : out std_logic
+  zero_flag : out std_logic;
+  carry_flag : out std_logic ;
+  sign_flag : out std_logic
   );
 end entity ;
 
@@ -18,6 +20,8 @@ begin
 
   output <= temp ;
   
+  carry_flag <= '0' ;
+  sign_flag <= '0' ;
   zero_flag <= not( temp(0) or temp(1) or temp(2) or temp(3) or temp(4) or temp(5) or temp(6) or temp(7) ) ;
 end architecture ;
 
