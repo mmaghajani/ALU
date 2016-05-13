@@ -32,7 +32,7 @@ begin
     p(2) <= a(2) xor b(2) ;
 
     c(0) <= cin ;
-    c(1) <= ( c(0) and p(0) ) or g(0) ;
+    c(1) <= g(0) or ( p(0) and c(0) ) ;
     c(2) <= g(1) or ( p(1) and ( g(0) or ( p(0) and c(0) ) ) ) ;
     c(3) <= g(2) or ( p(2) and ( g(1) or ( p(1) and g(0) ) or ( p(1) and p(0) and c(0) ) ) ) ;
     
