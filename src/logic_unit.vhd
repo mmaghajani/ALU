@@ -119,6 +119,3 @@ begin
     'X' when others ;
     
 end architecture ;
-
-
-
