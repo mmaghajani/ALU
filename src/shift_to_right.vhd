@@ -7,7 +7,7 @@ entity shift_to_right is port(
   a : in std_logic_vector( 7 downto 0 ) ;
   output : out std_logic_vector( 7 downto 0 ) ;
   zero_flag : out std_logic;
-  carry_flag : out std_logic ;
+  avf_flag : out std_logic ;
   sign_flag : out std_logic
   );
 end entity ;
@@ -27,7 +27,7 @@ begin
   temp_out(7) <= temp_in(7) ;
   output <= temp_out ;
   
-  carry_flag <= '0' ;
+  avf_flag <= '0' ;
   sign_flag <= '0' ;
   
   zero_flag <= not( temp_in(0) or temp_in(1) or temp_in(2) or temp_in(3) or temp_in(4) or
