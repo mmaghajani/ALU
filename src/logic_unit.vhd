@@ -78,8 +78,23 @@ signal sign_flag_and : std_logic ;
 signal sign_flag_or : std_logic ;
 signal sign_flag_shift_right : std_logic ;
 signal sign_flag_shift_left : std_logic ;
+
+signal controller : std_logic_vector( 3 downto 0 ) ;
 begin
+  and_make : and_maker port map ( a , b , and_output , zero_flag_and , carry_flag_and , sign_flag_and ) ;
+  or_make : or_maker port map ( a , b , or_output , zero_flag_or , carry_flag_or , sign_flag_or ) ;
+  left_shift : shift_to_left port map ( a , shift_to_left_output , zero_flag_and , carry_flag_and , sign_flag_and ) ;
+  right_shift : shift_to_right port map ( a , shift_to_right_output , zero_flag_and , carry_flag_and , sign_flag_and ) ;
   
+  controller <= and_controller & or_controller & shift_to_left_controller & shift_to_right_controller ;
+  
+  with controller select output <=
+    and_output when "1000" ,
+    or_output when "0100" ,
+    shift_to_left_output when "0010" ,
+    shift_to_right_output when "0001" ,
+    "XXXXXXXX" when others ;
+    
 end architecture ;
 
 
