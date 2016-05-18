@@ -7,6 +7,7 @@ entity multiplier is port (
   clk : in std_logic ;
   a : in std_logic_vector( 7 downto 0 ) ;
   b : in std_logic_vector( 7 downto 0 ) ;
+  do : in std_logic ;
   output : out std_logic_vector( 7 downto 0 ) ;
   avf_flag : out std_logic ;
   zero_flag : out std_logic ;
@@ -21,28 +22,30 @@ begin
   process( clk )
     variable b_temp : std_logic_vector( 7 downto 0 ) := b ;
     variable f : std_logic_vector( 7 downto 0 ) := "00000000" ;
-    variable sc : integer := 8 ;
+    variable sc : integer := -1 ;
     variable e : std_logic := '0' ;
     variable temp : std_logic_vector( 8 downto 0 ) ;
     begin
       output <= f ;
       zero_flag <= not( f(0) or f(1) or f(2) or f(3) or f(4) or f(5) or f(6) or f(7) ) ;
-      if( sc = 8 )then 
-        b_temp := b ;
-      end if ;
       if( clk'event and clk = '1' )then
-      if( sc >= 0 )then
-        if( b_temp(0) = '1' )then
-          temp := ("0"&f) + ("0"&a) ;
-          f := temp( 7 downto 0 ) ;
-          e := temp(8) ;          
-        end if ;
+        if( sc >= 0 )then
+          if( b_temp(0) = '1' )then
+            temp := ("0"&f) + ("0"&a) ;
+            f := temp( 7 downto 0 ) ;
+            e := temp(8) ;          
+          end if ;
         
-        b_temp := f(0) & b_temp( 7 downto 1 ) ;
-        f := e & f( 7 downto 1 ) ;
-        e := '0' ;
-        sc := sc - 1 ;
-      end if ;
+          b_temp := f(0) & b_temp( 7 downto 1 ) ;
+          f := e & f( 7 downto 1 ) ;
+          e := '0' ;
+          sc := sc - 1 ;
+        elsif( do = '1' )then
+          b_temp := b ;
+          sc := 7 ;
+          f := "00000000" ;
+          e := '0' ;
+        end if ;
       end if ;
     end process ;
 end architecture ;
