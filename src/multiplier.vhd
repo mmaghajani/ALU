@@ -40,7 +40,7 @@ begin
   make_add : adder port map ( a , f_temp , result_temp , avf_temp , zero_temp , sign_temp ) ;
     
   process( clk )
-    variable b_temp : std_logic_vector( 7 downto 0 ) := b ;
+    variable b_temp : std_logic_vector( 7 downto 0 ) ;
     variable f : std_logic_vector( 7 downto 0 ) := "00000000" ;
     variable sc : integer := -1 ;
     variable e : std_logic := '0' ;
