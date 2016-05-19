@@ -18,4 +18,20 @@ entity decoder is port (
 );
 end entity ;
 
+architecture gate_level of decoder is
+signal anot , bnot , cnot : std_logic ;
+begin
+  anot <= not a ;
+  bnot <= not b ;
+  cnot <= not c ;
+  
+  i0 <= anot and bnot and cnot ;
+  i1 <= anot and bnot and c ;
+  i2 <= anot and b and cnot ;
+  i3 <= anot and b and c ;
+  i4 <= a and bnot and cnot ;
+  i5 <= a and bnot and c ;
+  i6 <= a and b and cnot ;
+  i7 <= a and b and c ;
+end architecture ;
 
