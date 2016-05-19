@@ -7,14 +7,7 @@ entity decoder is port (
   a : in std_logic ;
   b : in std_logic ;
   c : in std_logic ;
-  i0 : out std_logic ;
-  i1 : out std_logic ;
-  i2 : out std_logic ;
-  i3 : out std_logic ;
-  i4 : out std_logic ;
-  i5 : out std_logic ;
-  i6 : out std_logic ;
-  i7 : out std_logic 
+  outs : out std_logic_vector( 7 downto 0 ) 
 );
 end entity ;
 
@@ -25,13 +18,13 @@ begin
   bnot <= not b ;
   cnot <= not c ;
   
-  i0 <= anot and bnot and cnot ;
-  i1 <= anot and bnot and c ;
-  i2 <= anot and b and cnot ;
-  i3 <= anot and b and c ;
-  i4 <= a and bnot and cnot ;
-  i5 <= a and bnot and c ;
-  i6 <= a and b and cnot ;
-  i7 <= a and b and c ;
+  outs(0) <= anot and bnot and cnot ;
+  outs(1) <= anot and bnot and c ;
+  outs(2) <= anot and b and cnot ;
+  outs(3) <= anot and b and c ;
+  outs(4) <= a and bnot and cnot ;
+  outs(5) <= a and bnot and c ;
+  outs(6) <= a and b and cnot ;
+  outs(7) <= a and b and c ;
 end architecture ;
 
