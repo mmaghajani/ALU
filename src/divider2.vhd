@@ -15,7 +15,7 @@ entity divider2 is port (
 );
 end entity ;
 
-architecture gate_level of divider2 is
+architecture data_flow of divider2 is
 begin
   sign_flag <= '0' ;
   process( clk )
