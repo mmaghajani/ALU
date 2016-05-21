@@ -30,8 +30,8 @@ begin
   avf_flag <= '0' ;
   sign_flag <= '0' ;
   
-  zero_flag <= not( temp_in(0) or temp_in(1) or temp_in(2) or temp_in(3) or temp_in(4) or
-   temp_in(5) or temp_in(6) or temp_in(7) ) ;
+  zero_flag <= not( temp_out(0) or temp_out(1) or temp_out(2) or temp_out(3) or temp_out(4) or
+   temp_out(5) or temp_out(6) or temp_out(7) ) ;
 end architecture ;
 
 
