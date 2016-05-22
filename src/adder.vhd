@@ -28,7 +28,7 @@ end component ;
 begin
   look_ahead1 : carry_look_ahead_adder port map ( a( 3 downto 0 ) , b( 3 downto 0 ) , '0' , temp_output( 3 downto 0 )
     , temp_cout ) ;
-  look_ahead2 : carry_look_ahead_Adder port map ( a( 7 downto 4 ) , b( 7 downto 4 ) , temp_cout , temp_output( 7 downto 4 ) ,
+  look_ahead2 : carry_look_ahead_adder port map ( a( 7 downto 4 ) , b( 7 downto 4 ) , temp_cout , temp_output( 7 downto 4 ) ,
     avf_flag ) ;
     
   sign_flag <= '0' ;

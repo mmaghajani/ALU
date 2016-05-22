@@ -28,7 +28,7 @@ begin
     output <= q & r ;
     zero_flag <= not( q(0) or q(1) or q(2) or q(3) or r(3) or r(2) or r(1) or r(0) ) ;
     if( clk'event and clk = '1' ) then
-      if( sc > 0 )then
+      if( sc > 0 and do = '1' )then
         temp(4) := not( r(3) ) ;
         r := r( 2 downto 0 ) & q(3) ;
         q := q( 2 downto 0 ) & '0' ;
@@ -48,7 +48,7 @@ begin
         
         sc := sc - 1 ;
         
-      elsif( do = '1' )then
+      elsif( do = '0' )then
         r := a( 7 downto 4 ) ;
         q := a( 3 downto 0 ) ;
         temp := ('0'&r) -( '0'&b( 3 downto 0 ));

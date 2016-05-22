@@ -28,19 +28,39 @@ begin
   
   controler : control_unit port map ( clk , a , b , selector , output , zero_flag , sign_flag , avf_flag ) ;
     
-  a <= "00001111" ;
-  b <= "00001111" ;
+  a <= "00001111" ,
+       "00011100" after 3400 ns,
+       "01111100" after 6500 ns;
+  b <= "00001111" ,
+       "00000011" after 3400 ns,
+       "00001111" after 6500 ns;
   
   selector <= "000" ,
               "001" after 100 ns ,
               "010" after 200 ns ,
-              "011" after 1900 ns ,
-              "100" after 3400 ns ,
-              "101" after 3500 ns ,
-              "110" after 3600 ns ,
-              "111" after 3700 ns ;
+              "011" after 2000 ns ,
+              "100" after 3000 ns ,
+              "101" after 3100 ns ,
+              "110" after 3200 ns ,
+              "111" after 3300 ns ,
+              "000" after 3400 ns ,
+              "001" after 3500 ns ,
+              "010" after 3600 ns ,
+              "011" after 5000 ns ,
+              "100" after 6100 ns ,
+              "101" after 6200 ns ,
+              "110" after 6300 ns ,
+              "111" after 6400 ns ,
+              "000" after 6500 ns ,
+              "001" after 6600 ns ,
+              "010" after 6700 ns ,
+              "011" after 8000 ns ,
+              "100" after 9000 ns ,
+              "101" after 9100 ns ,
+              "110" after 9200 ns ,
+              "111" after 9300 ns ;
   
   CLOCK:
-    clk <= '1' after 100 ns when clk = '0' else
-           '0' after 100 ns when clk = '1';
+    clk <= '1' after 50 ns when clk = '0' else
+           '0' after 50 ns when clk = '1';
 end architecture ;

@@ -54,7 +54,7 @@ component multiplier is port (
 );
 end component ;
 
-component divider2 is port (
+component divider is port (
   clk : in std_logic ;
   a : in std_logic_vector( 7 downto 0 ) ;
   b : in std_logic_vector( 7 downto 0 ) ;
@@ -86,15 +86,15 @@ signal sign_flag_subtractor : std_logic ;
 signal sign_flag_multiplier : std_logic ;
 signal sign_flag_divider : std_logic ;
 
-signal do_multiply , do_division : std_logic ;
+signal do : std_logic ;
 signal controller : std_logic_vector( 3 downto 0 ) ;
 begin
-  make_add : adder port map ( a , b , adder_output , zero_flag_adder , avf_flag_adder , sign_flag_adder ) ;
-  make_subtract: subtractor port map ( a , b , subtractor_output , zero_flag_subtractor , avf_flag_subtractor , sign_flag_subtractor ) ;
-  make_product : multiplier port map ( clk , a , b , do_multiply , multiplier_output , zero_flag_multiplier ,
-      avf_flag_multiplier , sign_flag_multiplier ) ;
-  make_division : divider2 port map ( clk , a , b , do_division , divider_output , zero_flag_divider , 
-      avf_flag_divider , sign_flag_divider ) ;
+  make_add : adder port map ( a , b , adder_output , avf_flag_adder , zero_flag_adder , sign_flag_adder ) ;
+  make_subtract: subtractor port map ( a , b , subtractor_output , avf_flag_subtractor , zero_flag_subtractor , sign_flag_subtractor ) ;
+  make_product : multiplier port map ( clk , a , b , multiplier_controller , multiplier_output ,
+      avf_flag_multiplier , zero_flag_multiplier , sign_flag_multiplier ) ;
+  make_division : divider port map ( clk , a , b , divider_controller , divider_output , 
+      avf_flag_divider , zero_flag_divider , sign_flag_divider ) ;
   
   controller <= adder_controller & subtractor_controller & multiplier_controller & divider_controller ;
   

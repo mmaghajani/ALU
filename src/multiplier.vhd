@@ -49,7 +49,7 @@ begin
       f_temp <= f ;
       zero_flag <= not( f(0) or f(1) or f(2) or f(3) or f(4) or f(5) or f(6) or f(7) ) ;
       if( clk'event and clk = '1' )then
-        if( sc >= 0 )then
+        if( sc >= 0 and do = '1' )then
           if( b_temp(0) = '1' )then
             f := result_temp ;
             e := avf_temp ;          
@@ -59,7 +59,7 @@ begin
           f := e & f( 7 downto 1 ) ;
           e := '0' ;
           sc := sc - 1 ;
-        elsif( do = '1' )then
+        elsif( do = '0' )then
           b_temp := b ;
           sc := 7 ;
           f := "00000000" ;

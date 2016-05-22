@@ -26,7 +26,7 @@ signal zero_flag_2 : std_logic ;
 
 signal controll : std_logic_vector( 2 downto 0 ) ;
 
-component borrow_look_ahead_subtractor is port (
+component barrow_look_ahead_subtractor is port (
   a : in std_logic_vector( 3 downto 0 ) ;
   b : in std_logic_vector( 3 downto 0 ) ;
   bin : in std_logic ;
@@ -45,17 +45,17 @@ component comprator is port (
 end component ;
 
 begin
-  look_ahead1 : borrow_look_ahead_subtractor port map ( a( 3 downto 0 ) , b( 3 downto 0 ) , '0' , temp_output_1( 3 downto 0 )
+  look_ahead1 : barrow_look_ahead_subtractor port map ( a( 3 downto 0 ) , b( 3 downto 0 ) , '0' , temp_output_1( 3 downto 0 )
     , temp_bout_1 ) ;
-  look_ahead2 : borrow_look_ahead_subtractor port map ( a( 7 downto 4 ) , b( 7 downto 4 ) , temp_bout_1 , temp_output_1( 7 downto 4 ) ,
+  look_ahead2 : barrow_look_ahead_subtractor port map ( a( 7 downto 4 ) , b( 7 downto 4 ) , temp_bout_1 , temp_output_1( 7 downto 4 ) ,
     temp_avf_flag_1 ) ;
   
-  look_ahead3 : borrow_look_ahead_subtractor port map ( b( 3 downto 0 ) , a( 3 downto 0 ) , '0' , temp_output_2( 3 downto 0 )
+  look_ahead3 : barrow_look_ahead_subtractor port map ( b( 3 downto 0 ) , a( 3 downto 0 ) , '0' , temp_output_2( 3 downto 0 )
     , temp_bout_2 ) ;
-  look_ahead4 : borrow_look_ahead_subtractor port map ( b( 7 downto 4 ) , a( 7 downto 4 ) , temp_bout_2 , temp_output_2( 7 downto 4 ) ,
+  look_ahead4 : barrow_look_ahead_subtractor port map ( b( 7 downto 4 ) , a( 7 downto 4 ) , temp_bout_2 , temp_output_2( 7 downto 4 ) ,
     temp_avf_flag_2 ) ;
-    
-  comprate : comprator port map ( a , b , controll(0) , controll(1) , controll(2) ) ;
+
+  comprate : comprator port map ( a , b , controll(2) , controll(1) , controll(0) ) ;
     
   with controll select output <=
     temp_output_1 when "010" ,
